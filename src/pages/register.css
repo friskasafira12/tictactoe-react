@@ -1,0 +1,68 @@
+/* Biar background hanya muncul sekali */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+  height: 106%;
+  width: 1920px;
+  background-image: url('/bglogo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Container tanpa background tambahan */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Box transparan dengan blur (tanpa latar dobel) */
+.register-box {
+  background-color: rgba(0, 0, 0, 0.4); /* atau bisa dihapus */
+  backdrop-filter: blur(10px);
+  padding: 60px 40px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+
+
+.register-title {
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.register-input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #000000dd;
+}
+
+.register-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #ed9fcb;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-transform: uppercase;
+}
+
+.register-button:hover {
+  background-color: #e390bd;
+}

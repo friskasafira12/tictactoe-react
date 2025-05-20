@@ -1,0 +1,87 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Times New Roman', Times, serif;
+  height: 106%;
+  width: 1920px;
+  background-image: url('/bglogo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login-title {
+  font-size: 35px;
+  color: #ffffff;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.login-input {
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 35px;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  background-color: #000000cc;
+}
+
+.login-box {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 80px 50px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.login-button {
+  width: 70%;
+  padding: 15px;
+  font-size: 20px;
+  background-color: #ed9fcb;
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+  margin-bottom: 50px;
+}
+
+.login-button:hover {
+  background-color: #e390bd;
+}
+
+/* Tambahan untuk teks Register */
+.register-text {
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.register-text a {
+  color: #c95792;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
