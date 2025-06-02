@@ -1,9 +1,9 @@
 import React, { useState } from "react"; // ✅ tambahkan useState di sini
-import Board from "../components/Board";
+import Board from "./components/Board";
 import { useNavigate } from "react-router-dom";
 import "../styles/gameplay.css";
 
-
+d
 function Gameplay() {
   const navigate = useNavigate();
   const [difficulty, setDifficulty] = useState("easy"); // default difficulty
