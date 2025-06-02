@@ -1,0 +1,141 @@
+/* Full background */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Background screen */
+.game-screen {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./bglogo.png"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Logo pojok kanan atas */
+.top-right-logo {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  transform: rotate(20deg);
+}
+
+/* Kontainer isi tengah */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 192, 203, 0.4);
+  padding: 40px 60px;
+  border-radius: 30px;
+}
+
+/* Judul besar */
+.game-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000;
+  background-color: #f48fb1;
+  padding: 10px 30px;
+  border-radius: 25px;
+  margin-bottom: 30px;
+}
+
+/* Tombol play */
+.play-button {
+  font-size: 28px;
+  padding: 15px 40px;
+  border: none;
+  background-color: #ec407a;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.play-button:hover {
+  background-color: #d81b60;
+}
+
+.enhanced {
+  animation: fadeInUp 1s ease-out;
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff00de, 0 0 20px #ff00de;
+  font-size: 3rem;
+}
+
+.play-button.pulse {
+  background: linear-gradient(to right, #ff0080, #ff66cc);
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  animation: pulse 1.2s infinite;
+  transition: transform 0.3s;
+}
+
+.play-button.pulse:hover {
+  transform: scale(1.05);
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: #d34d87;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 14px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #d34d87;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 0, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 128, 0);
+  }
+}

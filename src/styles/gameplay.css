@@ -1,0 +1,151 @@
+.gameplay-container {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./bglogo.png"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+/* Tombol TIC TAC TOE di atas board */
+.game-button-title {
+  background-color: #ffc4dd;
+  color: #2c2c2c;
+  border: none;
+  height: 50px;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+  cursor: default;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255, 192, 203, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+  }
+}
+
+.game-button-title {
+  background-color: #ffc4dd;
+  color: #2c2c2c;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+  cursor: default;
+  animation: pulse 2.5s infinite;
+  transition: all 0.3s ease;
+}
+
+
+/* Logo pojok kanan atas */
+.top-right-logo {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  transform: rotate(20deg);
+}
+
+
+/* Tombol kembali */
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: #d34d87;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 14px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #d34d87;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+/* Judul */
+.play-title {
+  background-color: #ffc4dd;
+  padding: 12px 40px;
+  border-radius: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+/* Wrapper board agar tampil elegan */
+.board-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0 0 30px rgba(255, 192, 203, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* Tambahkan ini di bawah .board-wrapper */
+.board-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0 0 30px rgba(255, 192, 203, 0.5);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* <== TENGAHKAN SECARA HORIZONTAL */
+  justify-content: center; /* <== TENGAHKAN SECARA VERTICAL (jika diperlukan) */
+  text-align: center; /* Supaya text juga rata tengah */
+}
+
+.game-cell {
+  width: 80px;
+  height: 80px;
+  font-size: 32px;
+  background-color: #ffc4dd;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #d34d87;
+  font-weight: bold;
+
+  /* Pastikan isi X atau O berada di tengah */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  transition: transform 0.2s ease;
+}
+
+.game-cell:hover {
+  transform: scale(1.05);
+}

@@ -1,39 +1,55 @@
-import React from "react";
-import "./landingpage.css";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/landingpage.css";
 
 const LandingPage = () => {
-  const handleStartGame = () => {
-    // Ganti ke rute game kamu, misalnya /game
-    window.location.href = "/game";
-  };
+  const navigate = useNavigate();
+  const [username, setUsername] = useState(null);
 
-  const handleTentang = () => {
-    window.location.href = "/tentang";
+  useEffect(() => {
+    // Cek apakah ada username di localStorage saat komponen mount
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
+
+  const handleStartGame = () => {
+    navigate("/game");
   };
 
   const handleLogin = () => {
-    window.location.href = "/login";
+    navigate("/login");
+  };
+
+  const handleLogout = () => {
+    // Hapus username dari localStorage dan update state
+    localStorage.removeItem("username");
+    setUsername(null);
   };
 
   return (
     <div className="game-landing">
-      <div className="overlay">
+      <div className="button-container">
         <button className="start-button" onClick={handleStartGame}>
           Mulai Game
         </button>
-      </div>
-      <div className="tentang">
-        <button className="tentang-button" onClick={handleStartGame}>
-          Tentang
-        </button>
-      </div>
-      <div className="login">
-        <button className="login-button" onClick={handleLogin}>
-          Login
-        </button>
+
+        {/* Jika username ada, tampilkan tombol username dan tombol logout */}
+        {username ? (
+          <>
+            <button className="username-button">{username}</button>
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <button className="login-button" onClick={handleLogin}>
+            Login
+          </button>
+        )}
       </div>
     </div>
-    
   );
 };
 

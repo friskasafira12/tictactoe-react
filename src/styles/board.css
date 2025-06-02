@@ -1,0 +1,103 @@
+/* src/styles/board.css */
+
+.winner-square {
+  border: 4px solid #ff69b4;
+  animation: glowWinner 1.5s ease-in-out infinite, scaleWinner 1.5s ease-in-out infinite;
+  box-shadow:
+    0 0 15px #ff69b4,
+    0 0 30px #ff1493,
+    0 0 45px #ff69b4,
+    0 0 60px #ff1493;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #ffe6f0, #ffb6c1);
+}
+
+@keyframes glowWinner {
+  0%, 100% {
+    box-shadow:
+      0 0 15px #ff69b4,
+      0 0 30px #ff1493,
+      0 0 45px #ff69b4,
+      0 0 60px #ff1493;
+  }
+  50% {
+    box-shadow:
+      0 0 30px #ff69b4,
+      0 0 50px #ff1493,
+      0 0 70px #ff69b4,
+      0 0 90px #ff1493;
+  }
+}
+
+@keyframes scaleWinner {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.turn-info {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  background-color: #ffc4dd;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #d34d87;
+  cursor: pointer;
+
+  /* Penting agar X dan O berada di tengah */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  transition: transform 0.2s ease;
+}
+
+.square:hover {
+  transform: scale(1.05);
+}
+
+/* Tombol ulangi */
+.restart-button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-size: 18px;
+  background-color: #ffadd8;
+  border: none;
+  border-radius: 14px;
+  color: #2c2c2c;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 0 10px #ffc0cb;
+}
+
+.restart-button:hover {
+  transform: scale(1.05);
+  background-color: #ffcce6;
+}
