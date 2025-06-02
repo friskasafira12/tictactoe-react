@@ -5,9 +5,10 @@ import "../styles/landingpage.css";
 const LandingPage = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState(null);
+  const [editing, setEditing] = useState(false);
+  const [newUsername, setNewUsername] = useState("");
 
   useEffect(() => {
-    // Cek apakah ada username di localStorage saat komponen mount
     const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
       setUsername(storedUsername);
@@ -23,26 +24,55 @@ const LandingPage = () => {
   };
 
   const handleLogout = () => {
-    // Hapus username dari localStorage dan update state
     localStorage.removeItem("username");
     setUsername(null);
   };
 
+  const handleUsernameClick = () => {
+    setNewUsername(username);
+    setEditing(true);
+  };
+
+  const handleSaveUsername = () => {
+    if (newUsername.trim() !== "") {
+      localStorage.setItem("username", newUsername);
+      setUsername(newUsername);
+    }
+    setEditing(false);
+  };
+
   return (
     <div className="game-landing">
+      {username && (
+        <div className="username-display" onClick={handleUsernameClick}>
+          {username}
+        </div>
+      )}
+
+      {editing && (
+        <>
+          <input
+            type="text"
+            className="username-edit-input"
+            value={newUsername}
+            onChange={(e) => setNewUsername(e.target.value)}
+            autoFocus
+          />
+          <button className="save-username-button" onClick={handleSaveUsername}>
+            SIMPAN
+          </button>
+        </>
+      )}
+
       <div className="button-container">
         <button className="start-button" onClick={handleStartGame}>
           Mulai Game
         </button>
 
-        {/* Jika username ada, tampilkan tombol username dan tombol logout */}
         {username ? (
-          <>
-            <button className="username-button">{username}</button>
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         ) : (
           <button className="login-button" onClick={handleLogin}>
             Login

@@ -38,6 +38,21 @@
   }
 }
 
+.difficulty-buttons {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.difficulty-select {
+  font-size: 18px;
+  margin-left: 10px;
+  padding: 5px 12px;
+  border-radius: 10px;
+  border: 2px solid #d34d87;
+  background-color: #fff0f5;
+}
+
+
 .board-container {
   display: flex;
   flex-direction: column;

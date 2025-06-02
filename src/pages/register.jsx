@@ -1,5 +1,3 @@
-// src/pages/Register.jsx
-
 import React, { useState } from 'react';
 import "../styles/register.css";
 import { useNavigate } from 'react-router-dom';
@@ -15,41 +13,47 @@ function Register() {
   const [error, setError] = useState("");
 
   const handleRegister = async () => {
-    setError(""); // Reset error message
+    setError(""); // Reset pesan error
 
-    // Validasi input kosong
+    // Validasi: semua field harus diisi
     if (!username || !email || !password) {
       setError("Semua field harus diisi.");
       return;
     }
 
+    // Validasi: username hanya huruf/angka (tanpa simbol)
+    const usernameRegex = /^[a-zA-Z0-9_]+$/;
+    if (!usernameRegex.test(username)) {
+      setError("Username hanya boleh huruf, angka, dan underscore (_).");
+      return;
+    }
+
     try {
-      // Cek apakah username sudah digunakan (opsional, tapi bisa ditambahkan)
+      // Cek apakah username sudah digunakan
       const usernameSnapshot = await getDoc(doc(db, "usernames", username));
       if (usernameSnapshot.exists()) {
         setError("Username sudah digunakan.");
         return;
       }
 
-      // Buat akun dengan email & password
+      // Daftarkan user di Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Simpan data user ke koleksi "users"
+      // Simpan user ke koleksi "users"
       await setDoc(doc(db, "users", user.uid), {
-        username: username,
-        email: email,
+        username,
+        email,
         wins: 0,
       });
 
-      // Simpan username sebagai dokumen untuk pengecekan duplikat
+      // Simpan username untuk pengecekan unik
       await setDoc(doc(db, "usernames", username), {
         uid: user.uid,
       });
 
       alert("Registrasi berhasil! Silakan login.");
       navigate("/login");
-
     } catch (err) {
       console.error("Kode error:", err.code);
       let errorMessage = "Terjadi kesalahan saat registrasi.";
@@ -65,6 +69,7 @@ function Register() {
           errorMessage = "Password harus minimal 6 karakter.";
           break;
         default:
+          errorMessage = err.message;
           break;
       }
 
