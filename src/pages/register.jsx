@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../styles/register.css";
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged  } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 
@@ -39,6 +39,16 @@ function Register() {
       // Daftarkan user di Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+
+      // ✅ Tunggu sampai auth benar-benar login (fix untuk production delay)
+    await new Promise((resolve) => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        if (currentUser) {
+          resolve();
+          unsubscribe();
+        }
+      });
+    });
 
       // Simpan user ke koleksi "users"
       await setDoc(doc(db, "users", user.uid), {
