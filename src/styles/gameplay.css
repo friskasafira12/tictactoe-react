@@ -1,7 +1,7 @@
 .gameplay-container {
   height: 100vh;
   width: 100vw;
-  background-image: url("./bglogo.png"); 
+  background-image: url("../assets/image/bglogo.png"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

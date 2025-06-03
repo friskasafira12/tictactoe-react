@@ -41,7 +41,7 @@ html, body {
 
 
 .game-landing {
-  background-image: url('/landing.png');
+  background-image: url('../assets/image/landing.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
