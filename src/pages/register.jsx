@@ -50,17 +50,28 @@ function Register() {
       });
     });
 
-      // Simpan user ke koleksi "users"
-      await setDoc(doc(db, "users", user.uid), {
-        username,
-        email,
-        wins: 0,
-      });
+      console.log("Step 1: User berhasil dibuat", user.uid);
 
-      // Simpan username untuk pengecekan unik
-      await setDoc(doc(db, "usernames", username), {
-        uid: user.uid,
-      });
+try {
+  await setDoc(doc(db, "users", user.uid), {
+    username,
+    email,
+    wins: 0,
+  });
+  console.log("Step 2: Data users berhasil ditulis");
+} catch (err) {
+  console.error("❌ Error saat tulis ke /users:", err.code);
+}
+
+try {
+  await setDoc(doc(db, "usernames", username), {
+    uid: user.uid,
+  });
+  console.log("Step 3: Data usernames berhasil ditulis");
+} catch (err) {
+  console.error("❌ Error saat tulis ke /usernames:", err.code);
+}
+
 
       alert("Registrasi berhasil! Silakan login.");
       navigate("/login");
