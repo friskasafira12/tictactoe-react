@@ -55,7 +55,7 @@ function Register() {
       alert("Registrasi berhasil! Silakan login.");
       navigate("/login");
     } catch (err) {
-      console.error("Kode error:", err.code);
+      console.error("Kode error:", err, err.code);
       let errorMessage = "Terjadi kesalahan saat registrasi.";
 
       switch (err.code) {
